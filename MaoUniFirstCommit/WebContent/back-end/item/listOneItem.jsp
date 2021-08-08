@@ -95,6 +95,17 @@
  body{
   overflow-x:hidden;
  }
+ 
+ .sontrue{
+ background-color: #bfbfbf;
+ color: #fff;
+ border:5px;
+ border-radius:5px;
+ margin-bottom:15px;
+ }
+ .sontrue:hover{
+ background-color: #e8c497;
+ }
 </style>
 </head>
 
@@ -215,15 +226,19 @@
 				<c:if test="${itemVO.itemTypeId == '6'}"><td scope="col" class="itemTypeId">毛孩保養</td></c:if>
 	       </tr>
 	       <tr>
-		        <td>新增圖片：</td>
+		        <td style="height:15px;">新增圖片：</td>
 		        <td>
-			         <FORM method="post" ACTION="<%=request.getContextPath()%>/ItemPhotosServlet" enctype="multipart/form-data">
+			         <FORM style="height:15px;" method="post" ACTION="<%=request.getContextPath()%>/ItemPhotosServlet" enctype="multipart/form-data">
 			          <input type="file" style="width:230px;" name="ipItem" multiple required/>
 			          <input type="hidden" name="itemId" value="${itemVO.itemId}" />
 			          <input type="hidden" name="action" value="uploadItems">
-			          <button type="submit" style="">送出</button>
+			          <button class="sontrue" type="submit" style="width:50px;">送出</button>
 			         </FORM>
 	            </td>
+       	  </tr>
+       	  <tr>
+       	  		<td>繼續新增：</td>
+       	  		<td><a href="<%=request.getContextPath()%>/back-end/item/addItem.jsp"><button class="sontrue" type="submit" style="width:285px;margin-top:2px;">新增下一筆商品</button></a></td>
        	  </tr>
       </table>
 

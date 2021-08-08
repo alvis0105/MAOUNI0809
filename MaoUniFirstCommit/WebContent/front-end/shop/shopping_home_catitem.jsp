@@ -8,7 +8,8 @@
 <%
   ItemVO itemVO = (ItemVO) request.getAttribute("itemVO");
 %>    
-    
+
+
     
     
 <html lang="en">
@@ -18,7 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=0.5, user-scalable=no">
 <meta name = "viewport" content ="width=device-width,initial-scale-1.0">
 
-<title>MaoUni商城首頁</title>
+<title>貓咪專區</title>
 	
     <!-- <script src="JavaScript 檔案位址.js"></script> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -786,8 +787,8 @@ cursor: pointer;
 			<!-- 以下為左方分類區塊(全部商品/精選專區...等) -->
 			<div class="col-md-2">
 			     <div class="list-group mt-3" style="position:absolute;width:85%;text-align:center;padding: 0px 10px;margin-left:20px;font-weight:600">
-                    <div title="您已在全部商品專區的頁面摟!" style="margin-top:70px;cursor:pointer;" class="list-group-item list-group-item-action active">全部商品</div>
-                    <a href="<%=request.getContextPath()%>/front-end/shop/shopping_home_catitem.jsp" class="list-group-item list-group-item-action">貓咪專區</a>
+                    <a style="margin-top:70px;" href="<%=request.getContextPath()%>/front-end/shop/shopping_home.jsp" class="list-group-item list-group-item-action" >全部商品</a>
+                    <div title="您已在貓咪專區的頁面摟!" style="cursor:pointer" class="list-group-item list-group-item-action active">貓咪專區</div>
                     <a href="<%=request.getContextPath()%>/front-end/shop/shopping_home_dogitem.jsp" class="list-group-item list-group-item-action">狗狗專區</a>
                     <a href="<%=request.getContextPath()%>/front-end/shop/shopping_home_fooditem.jsp" class="list-group-item list-group-item-action">毛孩食品</a>
                     <a href="<%=request.getContextPath()%>/front-end/shop/shopping_home_toysitem.jsp" class="list-group-item list-group-item-action">毛孩玩具</a>
@@ -801,27 +802,35 @@ cursor: pointer;
 			<div class="col-md-10" style="height:auto;">				
 				
 				<div class="DDM" style="margin-top:80px;">
-					<div class="SearchSorting">				    				   
+					<div class="SearchSorting">				    
 					    <div style="width:935px;margin-right:30px;">
-					    	<p style="color:#424242;font-size:25px;font-weight:600;margin-top:25px;margin-right:830px;">全部商品<hr></p>
+					    	<p style="color:#424242;font-size:25px;font-weight:600;margin-top:25px;margin-right:830px;">貓咪專區<hr></p>
 					    </div>
 					</div>
 				</div>
+				
 				<!-- 以下為右方商品清單資訊 -->
 				<div class="row" style="margin-top:20px;margin-left:50px;margin-right:10px;" >
 				
 				<c:forEach var="itemVO" items="${list.all}">
-				<c:if test="${itemVO.itemStatus == '1'}">
+				<c:if test="${itemVO.itemPetType == '貓'}">
 				
 					<div class="col-md-3" style="margin-top:45px;">
+						    
 						    <div class="card" >
+						    	
 						    	<div class="ItemPhotos">
+						    	
 						        <img src="data:image/jpeg; base64, ${itemVO.itemPhotoFirst}"/>	
+						        	
 						        </div>
 						        <div class="focus-content">
 						        <a id="${itemVO.itemId}" class="btn1 btn-sm d-block addItem" style="margin-top:-16px;"><i class="fas fa-shopping-cart addItem"></i>&nbsp加入購物車</a>
-						        </div>				  
+						        </div>
+						       			  
 						    </div>
+						    	
+						    
 							<div class="belowcard" style="text-align:center;margin-top:-5px;">
 							
 			    				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/Item/ItemServlet">
